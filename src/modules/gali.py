@@ -238,6 +238,14 @@ def indelfree_gali_to_mean_score(
     # Get length of the alignment.
     gali_length = get_ali_length(gali)
 
+    # Initialise.
+    mean_score = 0.0
+
+    # Trivial case:
+    # The alignment is empty.
+    if gali_length == 0:
+        return mean_score
+
     # -----------------------------------------------------------------|------|
     # For each of the 2 aligned sequences:
     # Count absolute frequency for all residues.
@@ -270,9 +278,6 @@ def indelfree_gali_to_mean_score(
     #               res_a res_b
     # mean_score = ----------------------------------------------
     #                             gali_length
-
-    # Initialise.
-    mean_score = 0.0
 
     # For all combinations of residue-pairs.
     for res_a in seq_a_res_to_count.keys():
